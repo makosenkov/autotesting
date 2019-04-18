@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.GroupsPage;
-import tests.TestBase;
 
 import static org.junit.Assert.fail;
 
@@ -32,9 +30,6 @@ public class FirstTest extends TestBase {
         driver.findElement(By.id("field_password")).clear();
         driver.findElement(By.id("field_password")).sendKeys("");
         driver.findElement(By.cssSelector("div.form-actions > div > input.button-pro.__wide")).click();
-
-        GroupsPage groupsPage = new GroupsPage(driver);
-
         driver.findElement(By.linkText("Группы 41")).click();
         driver.findElement(By.cssSelector("span.add-stub_tx")).click();
         driver.findElement(By.cssSelector("div.create-group-dialog_tx")).click();
