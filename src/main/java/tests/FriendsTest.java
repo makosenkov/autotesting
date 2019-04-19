@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 import utilities.CardWrapper;
+import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
-public class FriensTest extends TestBase {
+public class FriendsTest extends TestBase {
     private String baseUrl;
     private StringBuffer verificationErrors = new StringBuffer();
     private String targetFriendName;
@@ -24,37 +25,36 @@ public class FriensTest extends TestBase {
         driver = new ChromeDriver();
         baseUrl = "https://ok.ru/";
         targetFriendName = "Денис Графов";
-        messageForFriend = "отправлено из жабы, тестирую твою жопу";
+        messageForFriend = "отправлено из жабы";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void testCase() throws Exception {
         driver.get(baseUrl + "/dk?st.cmd=anonymMain&st.layer.cmd=PopLayerClose");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.clearField(loginPage.getLoginField());
-        loginPage.sendKeys(loginPage.getLoginField(), "89681874221");
+        loginPage.sendKeys(loginPage.getLoginField(), "");
         loginPage.clearField(loginPage.getPasswordField());
-        loginPage.sendKeys(loginPage.getPasswordField(), "123456*Mak");
+        loginPage.sendKeys(loginPage.getPasswordField(), "");
         loginPage.clickSubmit(loginPage.getSubmitField());
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         UserMainPage mainPage = new UserMainPage(driver);
         mainPage.click(mainPage.getFriendsField());
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         FriendsPage friendsPage = new FriendsPage(driver);
-
+        js.executeScript("window.scrollBy(0,450)");
         List<CardWrapper> cards = friendsPage.getFriendsCardWrappers();
         assertNotNull(cards);
         for (CardWrapper card: cards) {
+            System.out.println(card.getName());
             if (card.getName().equals(targetFriendName)) {
                 card.clickWrite();
             }
         }
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         ChatPage chatPage = new ChatPage(driver);
         chatPage.writeMessage(messageForFriend);

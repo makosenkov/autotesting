@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ChatPage extends BasePage {
-    private static String CHAT_NAME = "$x(\"//*[@data-l='t,menu_opponent_name']\")";
-    private static String ACTIVE_CHAT = "$x(\"//div[@class='chats_i h-mod __active __unreadMy']\")";
-    private static String MESSAGE_FIELD = "$x(\"//*[@name='st.txt']\")";
-    private static String SEND_MESSAGE = "$x(\"//*[@class='button-pro comments_add-controls_save']\")";
+    private static String CHAT_NAME = "//*[@data-l='t,menu_opponent_name']";
+    private static String ACTIVE_CHAT = "//div[@class='chats_i h-mod __active __unreadMy']";
+    private static String MESSAGE_FIELD = "//*[@name='st.txt']\")";
+    private static String SEND_MESSAGE = "//*[@class='button-pro comments_add-controls_save']";
     private WebDriver driver;
 
     public ChatPage(WebDriver driver) {

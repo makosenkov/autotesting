@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage{
 
-    private static final String LOGIN_FIELD = "$x(\".//input[@id='field_email']\")";
-    private static final String PASSWORD_FIELD = "$x(\".//input[@id='field_password']\")";
-    private static final String SUBMIT = "$x(\"//form//div[@class='form-actions']//input[@type='submit']\")";
+    private static final String LOGIN_FIELD = ".//input[@id='field_email']";
+    private static final String PASSWORD_FIELD = ".//input[@id='field_password']";
+    private static final String SUBMIT = "//form//div[@class='form-actions']//input[@type='submit']";
     private WebDriver driver;
 
     public LoginPage(WebDriver driver) {

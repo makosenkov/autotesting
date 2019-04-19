@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class UserMainPage extends BasePage {
-    private static final String FRIENDS = "$x(\".//input[@id='field_email']\")";
-    private static final String TOOLBAR = "$x(\"//*[@data-l='t,navigationToolbar']\")";
-    private static final String AVATAR = "$x(\"//*[@class='entity-avatar']\")";
+    private static final String FRIENDS = ".//*[@data-l='t,userFriend']";
+    private static final String TOOLBAR = "//*[@data-l='t,navigationToolbar']";
+    private static final String AVATAR = "//*[@class='entity-avatar']";
     private WebDriver driver;
 
     public UserMainPage(WebDriver driver) {

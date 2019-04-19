@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FriendsPage extends BasePage {
-    private static final String FRIEND_CARDS = "$x(\"//*[@class='user-grid-card_img']\")";
+    private static final String FRIEND_CARDS = "user-grid-card";
+    private static final String FRIEND_CARDS_HOLDER = "hook_Block_MyFriendsSquareCardsPagingB";
     private WebDriver driver;
 
     public FriendsPage(WebDriver driver) {
@@ -29,12 +30,16 @@ public class FriendsPage extends BasePage {
         return wrappedCards;
     }
 
-    private List<WebElement> getFriendCards() {
-        return driver.findElements(By.xpath(FRIEND_CARDS));
+    public List<WebElement> getFriendCards() {
+        return driver.findElements(By.className(FRIEND_CARDS));
+    }
+
+    public WebElement getFriendCardsHolder() {
+        return driver.findElement(By.id(FRIEND_CARDS_HOLDER));
     }
 
     @Override
     boolean check(WebDriver driver) {
-        return getFriendCards() != null;
+        return getFriendCards() != null && getFriendCardsHolder() != null;
     }
 }

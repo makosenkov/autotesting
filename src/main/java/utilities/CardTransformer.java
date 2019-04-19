@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class CardTransformer {
-    private static final String FRIEND_NAME = "$x(\"//div//*[@class='n-t bold']\")";
-    private static final String FRIEND_BUTTON = "$x(\"//*[@data-l='t,sendMessage' and " +
-        "@class='button-pro __sec __small __ic __send-msg mt-x __wide']\")";
+    private static final String FRIEND_NAME = "//div//*[@class='n-t bold']";
+    private static final String FRIEND_BUTTON = "//*[@data-l='t,sendMessage' and " +
+        "@class='button-pro __sec __small __ic __send-msg mt-x __wide']";
 
     public static CardWrapper wrap(WebElement element) {
         WebElement name = element.findElement(By.xpath(FRIEND_NAME));
