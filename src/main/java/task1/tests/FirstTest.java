@@ -1,4 +1,4 @@
-package tests;
+package task1.tests;
 
 import java.util.concurrent.TimeUnit;
 

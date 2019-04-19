@@ -1,16 +1,16 @@
-package pages;
+package task1.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utilities.CardTransformer;
-import utilities.CardWrapper;
+import task1.utilities.CardWrapper;
+import task1.utilities.CardTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FriendsPage extends BasePage {
-    private static final String FRIEND_CARDS = "user-grid-card";
+    private static final String FRIEND_CARDS = ".//*[@class='user-grid-card']";
     private static final String FRIEND_CARDS_HOLDER = "hook_Block_MyFriendsSquareCardsPagingB";
     private WebDriver driver;
 
@@ -30,8 +30,9 @@ public class FriendsPage extends BasePage {
         return wrappedCards;
     }
 
-    public List<WebElement> getFriendCards() {
-        return driver.findElements(By.className(FRIEND_CARDS));
+    private List<WebElement> getFriendCards() {
+        List<WebElement> elements = driver.findElements(By.xpath(FRIEND_CARDS));
+        return elements;
     }
 
     public WebElement getFriendCardsHolder() {

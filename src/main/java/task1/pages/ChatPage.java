@@ -1,14 +1,14 @@
-package pages;
+package task1.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ChatPage extends BasePage {
-    private static String CHAT_NAME = "//*[@data-l='t,menu_opponent_name']";
-    private static String ACTIVE_CHAT = "//div[@class='chats_i h-mod __active __unreadMy']";
-    private static String MESSAGE_FIELD = "//*[@name='st.txt']\")";
-    private static String SEND_MESSAGE = "//*[@class='button-pro comments_add-controls_save']";
+    private static String CHAT_NAME = ".//*[@data-l='t,menu_opponent_name']";
+    private static String ACTIVE_CHAT = ".//div[@class='chats_i h-mod __active __unreadMy']";
+    private static String MESSAGE_FIELD = ".//*[@name='st.txt']";
+    private static String SEND_MESSAGE = ".//*[@class='button-pro comments_add-controls_save']";
     private WebDriver driver;
 
     public ChatPage(WebDriver driver) {
@@ -35,15 +35,14 @@ public class ChatPage extends BasePage {
     }
 
     public void writeMessage(String text) {
+        getMessageField().click();
         getMessageField().sendKeys(text);
         getSendMessage().click();
     }
 
     @Override
     boolean check(WebDriver driver) {
-        return getActiveChat() != null
-            && getChatName() != null
-            && getMessageField() != null
-            && getActiveChat().getText().equals(getChatName().getText());
+        return  getChatName() != null
+            && getMessageField() != null;
     }
 }
